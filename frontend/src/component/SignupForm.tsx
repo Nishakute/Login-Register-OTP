@@ -38,7 +38,7 @@ const SignupForm: React.FC = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5001/send-otp", {
+      const response = await axios.post("https://login-register-otp.vercel.app/?vercelToolbarCode=VNBSyz1IkwgjAlh/send-otp", {
         email: formData.email,
       });
       if (response.status === 200) {
@@ -84,7 +84,7 @@ const SignupForm: React.FC = () => {
         otp,
       };
       const Printemail =formData.email;
-      const response = await axios.post("http://localhost:5001/user/register", data);
+      const response = await axios.post("https://login-register-otp.vercel.app/?vercelToolbarCode=VNBSyz1IkwgjAlh/user/register", data);
       if (response.status === 201) {
         setSuccess("User registered successfully!");
         setError("");
