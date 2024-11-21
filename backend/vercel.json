@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }] 
   "builds": [
     {
       "src": "./index.js",
@@ -12,5 +13,4 @@
       "dest": "dist/server.js"
     }
   ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }] 
 }
