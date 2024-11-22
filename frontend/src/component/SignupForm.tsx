@@ -39,6 +39,7 @@ const SignupForm: React.FC = () => {
     setLoading(true);
     try {
       const response = await axios.post("https://login-register-otp-production.up.railway.app/send-otp", {
+
         email: formData.email,
       });
       if (response.status === 200) {
@@ -85,6 +86,7 @@ const SignupForm: React.FC = () => {
       };
       const Printemail =formData.email;
       const response = await axios.post("https://login-register-otp-production.up.railway.app/user/register", data);
+
       if (response.status === 201) {
         setSuccess("User registered successfully!");
         setError("");

@@ -16,6 +16,7 @@ const SignIn = () => {
     try {
       // Make the POST request to the login endpoint
       const response = await axios.post("https://login-register-otp-production.up.railway.app/user/login", {
+
         email,
         password,
       });
