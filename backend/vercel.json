@@ -6,5 +6,10 @@
       "use": "@vercel/node"
     }
   ],
+  "functions": {
+    "api/*": {
+      "maxDuration": 10000 // Adjust this based on your use case
+    }
+  },
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
