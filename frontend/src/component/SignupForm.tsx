@@ -1,145 +1,3 @@
-// import React, { useState, CSSProperties } from 'react';
-// import axios from 'axios';
-// import image from '../Assets/singup.jpg';
-
-// const SignupForm: React.FC = () => {
-//   const [formData, setFormData] = useState({
-//     firstName: '',
-//     lastName: '',
-//     password: '',
-//     confirmPassword: '',
-//     contactMode: '',
-//     email: '',
-//   });
-
-//   const [error, setError] = useState('');
-//   const [success, setSuccess] = useState('');
-
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-
-//     // Validate password match
-//     if (formData.password !== formData.confirmPassword) {
-//       setError('Passwords do not match! Please try again.');
-//       setSuccess('');
-//       return;
-//     }
-
-//     // Prepare data for backend
-//     const data = {
-//       fname: formData.firstName,
-//       lname: formData.lastName,
-//       contact: formData.contactMode,
-//       email: formData.email,
-//       password: formData.password,
-//     };
-
-//     try {
-//       const response = await axios.post('http://localhost:5001/user/register', data);
-//       if (response.status === 201) {
-//         setSuccess('User registered successfully!');
-//         setError('');
-//       }
-//     } catch (error: any) {
-//       setError(error.response?.data?.message || 'Registration failed.');
-//       setSuccess('');
-//       console.log(error)
-//     }
-//   };
-
-//   return (
-//     <div style={styles.wrapper}>
-//       <div style={styles.imageContainer}>
-//         <img src={image} alt="Signup Illustration" style={styles.image} />
-//       </div>
-//       <div style={styles.container}>
-//         <h2 style={styles.heading}>Let Us Know <span style={{ color: 'red' }}>!</span></h2>
-//         {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
-//         {success && <div style={{ color: 'green', marginBottom: '10px' }}>{success}</div>}
-//         <form onSubmit={handleSubmit} style={styles.form}>
-//           <div style={styles.formGroup}>
-//             <input
-//               type="text"
-//               name="firstName"
-//               placeholder="First Name"
-//               value={formData.firstName}
-//               onChange={handleChange}
-//               style={styles.input}
-//               required
-//             />
-//           </div>
-//           <div style={styles.formGroup}>
-//             <input
-//               type="text"
-//               name="lastName"
-//               placeholder="Last Name"
-//               value={formData.lastName}
-//               onChange={handleChange}
-//               style={styles.input}
-//               required
-//             />
-//           </div>
-//           <div style={styles.formGroup}>
-//             <input
-//               type="email"
-//               name="email"
-//               placeholder="Email"
-//               value={formData.email}
-//               onChange={handleChange}
-//               style={styles.input}
-//               required
-//             />
-//           </div>
-//           <div style={styles.formGroup}>
-//             <input
-//               type="password"
-//               name="password"
-//               placeholder="Set Password"
-//               value={formData.password}
-//               onChange={handleChange}
-//               style={styles.input}
-//               required
-//             />
-//           </div>
-//           <div style={styles.formGroup}>
-//             <input
-//               type="password"
-//               name="confirmPassword"
-//               placeholder="Retype Password"
-//               value={formData.confirmPassword}
-//               onChange={handleChange}
-//               style={styles.input}
-//               required
-//             />
-//           </div>
-//           <div style={styles.formGroup}>
-//             <select
-//               name="contactMode"
-//               value={formData.contactMode}
-//               onChange={handleChange}
-//               style={styles.input}
-//               required
-//             >
-//               <option value="" disabled>
-//                 Contact mode
-//               </option>
-//               <option value="email">Email</option>
-//               <option value="phone">Phone</option>
-//             </select>
-//           </div>
-//           <button type="submit" style={styles.button}>
-//             Sign Up
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
 import React, { useState, CSSProperties } from "react";
 import axios from "axios";
 import image from "../Assets/singup.jpg";
@@ -180,7 +38,7 @@ const SignupForm: React.FC = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5001/send-otp", {
+      const response = await axios.post("https://login-register-otp-production.up.railway.app/send-otp", {
         email: formData.email,
       });
       if (response.status === 200) {
@@ -225,8 +83,8 @@ const SignupForm: React.FC = () => {
         password: formData.password,
         otp,
       };
-      setPrintemail(formData.email)
-      const response = await axios.post("http://localhost:5001/user/register", data);
+      const Printemail =formData.email;
+      const response = await axios.post("https://login-register-otp-production.up.railway.app/user/register", data);
       if (response.status === 201) {
         setSuccess("User registered successfully!");
         setError("");
@@ -240,6 +98,7 @@ const SignupForm: React.FC = () => {
           email: "",
         });
         setOtp("");
+        console.log("Hiii",Printemail)
         navigate("/dashboard",{ state: { email: Printemail } })
       }
     } catch (err: any) {

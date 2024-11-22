@@ -5,13 +5,7 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 
 const cors = require("cors");
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 require("dotenv").config();
 app.use(bodyParser.json());
@@ -31,6 +25,9 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome To login registration system" });
 });
 
+app.get("/nisha", (req, res) => {
+  res.status(200).json({ message: "Welcome Nisha" });
+});
 let otpStore = {};
 
 // Generate a 6-digit OTP
