@@ -8,7 +8,7 @@
   ],
   "functions": {
     "api/*": {
-      "maxDuration": 50
+      "maxDuration": 60
     }
   },
   "rewrites": [
