@@ -2,19 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.js", 
+      "src": "./index.js",
       "use": "@vercel/node"
     }
   ],
-  "functions": {
-    "api/*": {
-      "maxDuration": 10
-    }
-  },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html" 
+      "src": "/(.*)",
+      "dest": "dist/server.js"
     }
   ]
 }
